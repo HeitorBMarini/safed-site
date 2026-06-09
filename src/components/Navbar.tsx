@@ -35,11 +35,16 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
-        <Link href="/" className="flex items-center shrink-0">
+        <Link href="/" className="relative flex items-center shrink-0 h-11 lg:h-14">
           <img
-            src="https://safed.com.br/wp-content/uploads/2021/06/logo.png"
+            src="/logo.png"
             alt="SafeD"
-            className={`h-9 lg:h-11 object-contain transition-all duration-300 ${!scrolled ? "brightness-0 invert" : ""}`}
+            className={`h-full object-contain transition-opacity duration-300 ${scrolled ? "opacity-0 absolute" : "opacity-100"}`}
+          />
+          <img
+            src="/flogo.png"
+            alt="SafeD"
+            className={`h-full object-contain transition-opacity duration-300 ${scrolled ? "opacity-100" : "opacity-0 absolute"}`}
           />
         </Link>
 

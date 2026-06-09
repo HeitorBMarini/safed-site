@@ -10,14 +10,26 @@ export default function Contato() {
   const inView = useInView(ref, { once: true, margin: "-80px" })
   const [form, setForm] = useState({ nome: "", telefone: "", email: "", assunto: "", mensagem: "" })
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const msg = encodeURIComponent(
-      `*Contato pelo site SafeD*\n\nNome: ${form.nome}\nTelefone: ${form.telefone}\nEmail: ${form.email}\nAssunto: ${form.assunto}\n\n${form.mensagem}`
-    )
-    window.open(`https://wa.me/${contact.whatsapp}?text=${msg}`, "_blank")
-    setSent(true)
+    setLoading(true)
+    setError("")
+    try {
+      const res = await fetch("/api/contato", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error("Falha ao enviar")
+      setSent(true)
+    } catch {
+      setError("Erro ao enviar. Tente pelo WhatsApp.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -165,7 +177,7 @@ export default function Contato() {
                 <div className="flex flex-col items-center justify-center py-16 text-center">
                   <div className="text-6xl mb-5">✅</div>
                   <h3 className="text-2xl font-bold mb-3">Mensagem enviada!</h3>
-                  <p className="text-gray-400">Você será redirecionado para o WhatsApp. Em breve entraremos em contato.</p>
+                  <p className="text-gray-400">Sua mensagem foi enviada. Em breve entraremos em contato.</p>
                   <button
                     onClick={() => setSent(false)}
                     className="mt-8 text-red-400 hover:text-red-300 underline text-sm transition-colors"
@@ -244,11 +256,15 @@ export default function Contato() {
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-red-400 text-sm text-center">{error}</p>
+                  )}
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2.5 bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-bold transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-base mt-2"
+                    disabled={loading}
+                    className="w-full flex items-center justify-center gap-2.5 bg-red-600 hover:bg-red-700 disabled:opacity-60 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-base mt-2"
                   >
-                    <Send size={17} /> Enviar pelo WhatsApp
+                    <Send size={17} /> {loading ? "Enviando..." : "Enviar Mensagem"}
                   </button>
                 </form>
               )}

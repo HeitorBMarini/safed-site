@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Facebook, Youtube, Linkedin } from "lucide-react"
 import { eventos, cursos, contact } from "@/data/content"
 
 export default function Footer() {
@@ -9,14 +10,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <img
-              src="https://safed.com.br/wp-content/uploads/2021/06/flogo.png"
+              src="/flogo.png"
               alt="SafeD"
               className="h-12 object-contain mb-5 brightness-200"
             />
             <p className="text-sm leading-relaxed mb-5">
               Da partida ao destino, com segurança. Especialistas em eventos automobilísticos e cursos de direção defensiva desde 2002.
             </p>
-            <p className="text-xs text-gray-600">© {new Date().getFullYear()} SafeD Cursos e Eventos. Todos os direitos reservados.</p>
           </div>
 
           {/* Eventos */}
@@ -76,11 +76,17 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-600">Desenvolvido com Next.js + Tailwind CSS</p>
-          <div className="flex gap-5">
-            <a href={contact.facebook} target="_blank" rel="noopener noreferrer" className="text-xs hover:text-red-400 transition-colors">Facebook</a>
-            <a href={contact.youtube} target="_blank" rel="noopener noreferrer" className="text-xs hover:text-red-400 transition-colors">YouTube</a>
-            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-xs hover:text-red-400 transition-colors">LinkedIn</a>
+          <p className="text-xs">© {new Date().getFullYear()} SafeD Cursos e Eventos. Todos os direitos reservados.</p>
+          <div className="flex gap-4">
+            <a href={contact.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-9 h-9 flex items-center justify-center rounded-lg bg-white/5 hover:bg-blue-600 border border-white/8 hover:border-blue-500 text-gray-400 hover:text-white transition-all duration-200">
+              <Facebook size={16} />
+            </a>
+            <a href={contact.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-9 h-9 flex items-center justify-center rounded-lg bg-white/5 hover:bg-red-600 border border-white/8 hover:border-red-500 text-gray-400 hover:text-white transition-all duration-200">
+              <Youtube size={16} />
+            </a>
+            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-9 h-9 flex items-center justify-center rounded-lg bg-white/5 hover:bg-blue-700 border border-white/8 hover:border-blue-600 text-gray-400 hover:text-white transition-all duration-200">
+              <Linkedin size={16} />
+            </a>
           </div>
         </div>
       </div>
