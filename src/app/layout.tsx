@@ -1,7 +1,14 @@
 import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+})
 
 export const metadata: Metadata = {
   title: {
@@ -26,12 +33,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={inter.variable}>
       <head>
         <link rel="icon" href="https://safed.com.br/wp-content/uploads/2021/06/favicon-1.png" />
         <meta name="theme-color" content="#c8102e" />
       </head>
-      <body>
+      <body className={inter.className}>
         <Navbar />
         <main>{children}</main>
         <Footer />

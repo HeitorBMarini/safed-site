@@ -13,44 +13,48 @@ export default function Navbar() {
   const [cursosOpen, setCursosOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener("scroll", onScroll)
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
+  const linkClass = scrolled
+    ? "text-sm font-medium text-gray-700 hover:text-red-600 transition-colors"
+    : "text-sm font-medium text-white/90 hover:text-white transition-colors"
+
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md" : "bg-transparent"
+        scrolled
+          ? "bg-white/96 backdrop-blur-md shadow-md"
+          : "bg-transparent"
       }`}
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
+      <nav className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center shrink-0">
           <img
             src="https://safed.com.br/wp-content/uploads/2021/06/logo.png"
             alt="SafeD"
-            className="h-10 lg:h-12 object-contain"
+            className={`h-9 lg:h-11 object-contain transition-all duration-300 ${!scrolled ? "brightness-0 invert" : ""}`}
           />
         </Link>
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-8">
-          <Link href="/" className="text-sm font-medium text-gray-700 hover:text-red-600 transition-colors">
-            Home
-          </Link>
+          <Link href="/" className={linkClass}>Home</Link>
 
           {/* Eventos dropdown */}
-          <div className="relative group">
+          <div className="relative">
             <button
-              className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-red-600 transition-colors"
+              className={`${linkClass} flex items-center gap-1`}
               onMouseEnter={() => setEventosOpen(true)}
               onMouseLeave={() => setEventosOpen(false)}
             >
-              Eventos <ChevronDown size={14} />
+              Eventos <ChevronDown size={14} className={`transition-transform ${eventosOpen ? "rotate-180" : ""}`} />
             </button>
             <AnimatePresence>
               {eventosOpen && (
@@ -78,13 +82,13 @@ export default function Navbar() {
           </div>
 
           {/* Cursos dropdown */}
-          <div className="relative group">
+          <div className="relative">
             <button
-              className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-red-600 transition-colors"
+              className={`${linkClass} flex items-center gap-1`}
               onMouseEnter={() => setCursosOpen(true)}
               onMouseLeave={() => setCursosOpen(false)}
             >
-              Cursos <ChevronDown size={14} />
+              Cursos <ChevronDown size={14} className={`transition-transform ${cursosOpen ? "rotate-180" : ""}`} />
             </button>
             <AnimatePresence>
               {cursosOpen && (
@@ -111,25 +115,29 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <Link href="/#sobre" className="text-sm font-medium text-gray-700 hover:text-red-600 transition-colors">
-            Quem Somos
-          </Link>
+          <Link href="/#sobre" className={linkClass}>Quem Somos</Link>
 
           <Link
             href="/#contato"
-            className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-700 transition-colors"
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95 ${
+              scrolled
+                ? "bg-red-600 text-white hover:bg-red-700"
+                : "bg-white text-red-600 hover:bg-white/90"
+            }`}
           >
             <Phone size={14} /> Fale Conosco
           </Link>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile hamburger — visible below lg */}
         <button
-          className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
+          className={`lg:hidden flex items-center justify-center w-11 h-11 rounded-xl transition-colors ${
+            scrolled ? "text-gray-700 hover:bg-gray-100" : "text-white hover:bg-white/15"
+          }`}
           onClick={() => setOpen(!open)}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
@@ -141,60 +149,62 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="lg:hidden bg-white border-t border-gray-100 overflow-hidden"
+            className="lg:hidden bg-white border-t border-gray-100 overflow-hidden shadow-xl"
           >
-            <div className="px-4 py-4 space-y-1">
+            <div className="px-5 py-6 space-y-1">
               <Link
                 href="/"
-                className="block px-3 py-2 rounded-lg text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium"
+                className="block px-4 py-3 rounded-xl text-gray-800 hover:bg-red-50 hover:text-red-600 font-medium transition-colors text-base"
                 onClick={() => setOpen(false)}
               >
                 Home
               </Link>
 
-              <div>
-                <p className="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Eventos</p>
+              <div className="pt-3">
+                <p className="px-4 pb-2 text-xs font-bold text-gray-400 uppercase tracking-widest">Eventos</p>
                 {eventos.map((e) => (
                   <Link
                     key={e.slug}
                     href={`/eventos/${e.slug}`}
-                    className="block px-5 py-2 text-sm text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-lg"
+                    className="block px-6 py-3 text-sm text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors"
                     onClick={() => setOpen(false)}
                   >
-                    {e.icon} {e.title}
+                    {e.title}
                   </Link>
                 ))}
               </div>
 
-              <div>
-                <p className="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Cursos</p>
+              <div className="pt-3">
+                <p className="px-4 pb-2 text-xs font-bold text-gray-400 uppercase tracking-widest">Cursos</p>
                 {cursos.map((c) => (
                   <Link
                     key={c.slug}
                     href={`/cursos/${c.slug}`}
-                    className="block px-5 py-2 text-sm text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-lg"
+                    className="block px-6 py-3 text-sm text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors"
                     onClick={() => setOpen(false)}
                   >
-                    {c.icon} {c.title}
+                    {c.title}
                   </Link>
                 ))}
               </div>
 
               <Link
                 href="/#sobre"
-                className="block px-3 py-2 rounded-lg text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium"
+                className="block px-4 py-3 rounded-xl text-gray-800 hover:bg-red-50 hover:text-red-600 font-medium transition-colors text-base"
                 onClick={() => setOpen(false)}
               >
                 Quem Somos
               </Link>
 
-              <Link
-                href="/#contato"
-                className="block px-3 py-2 rounded-lg bg-red-600 text-white font-medium text-center mt-2"
-                onClick={() => setOpen(false)}
-              >
-                Fale Conosco
-              </Link>
+              <div className="pt-3 pb-2">
+                <Link
+                  href="/#contato"
+                  className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-red-600 text-white font-semibold text-base transition-colors hover:bg-red-700"
+                  onClick={() => setOpen(false)}
+                >
+                  <Phone size={16} /> Fale Conosco
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}
