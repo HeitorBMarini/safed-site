@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Phone, MessageCircle, CheckCircle2, ArrowRight } from "lucide-react"
+import { Phone, MessageCircle, CheckCircle2, ArrowRight, CircleCheck } from "lucide-react"
 import { useState } from "react"
 import { contact } from "@/data/content"
 import Breadcrumb from "@/components/Breadcrumb"
@@ -59,14 +59,9 @@ export default function PageDetail({ item, backHref, backLabel, tipo }: Props) {
               transition={{ duration: 0.5 }}
             >
               <Breadcrumb items={breadcrumbItems} />
-              <div className="flex items-center gap-5 mt-6">
-                <div className="w-14 h-14 bg-red-600 rounded-2xl flex items-center justify-center text-2xl shadow-lg shrink-0">
-                  {item.icon}
-                </div>
-                <div>
-                  <span className="text-red-400 text-xs font-bold uppercase tracking-[0.2em]">{tipo}</span>
-                  <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white leading-tight">{item.title}</h1>
-                </div>
+              <div className="mt-6">
+                <span className="text-red-400 text-xs font-bold uppercase tracking-[0.2em]">{tipo}</span>
+                <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white leading-tight mt-1">{item.title}</h1>
               </div>
             </motion.div>
           </div>
@@ -142,7 +137,7 @@ export default function PageDetail({ item, backHref, backLabel, tipo }: Props) {
 
               {sent ? (
                 <div className="text-center py-8">
-                  <div className="text-4xl mb-4">✅</div>
+                  <div className="mb-4"><CircleCheck size={44} className="text-green-500 mx-auto" /></div>
                   <p className="text-white font-semibold mb-2">Mensagem enviada!</p>
                   <p className="text-gray-400 text-sm">Você será redirecionado para o WhatsApp.</p>
                   <button

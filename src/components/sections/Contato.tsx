@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
-import { Phone, Mail, MessageCircle, Facebook, Youtube, Linkedin, Send, MapPin } from "lucide-react"
+import { Phone, Mail, MessageCircle, Facebook, Youtube, Linkedin, Send, MapPin, CheckCircle2 } from "lucide-react"
 import { contact } from "@/data/content"
 
 export default function Contato() {
@@ -175,7 +175,7 @@ export default function Contato() {
             <div className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-10">
               {sent ? (
                 <div className="flex flex-col items-center justify-center py-16 text-center">
-                  <div className="text-6xl mb-5">✅</div>
+                  <div className="mb-5"><CheckCircle2 size={56} className="text-green-500 mx-auto" /></div>
                   <h3 className="text-2xl font-bold mb-3">Mensagem enviada!</h3>
                   <p className="text-gray-400">Sua mensagem foi enviada. Em breve entraremos em contato.</p>
                   <button

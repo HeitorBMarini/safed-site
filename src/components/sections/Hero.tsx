@@ -2,163 +2,145 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
-import { useState, useEffect, useCallback } from "react"
+import { ArrowRight, ChevronDown } from "lucide-react"
+import { useState } from "react"
 
-const slides = [
+const tabs = [
   {
-    image: "https://safed.com.br/wp-content/uploads/2021/06/slide1-4-1600x800-1.jpg",
-    tag: "Há mais de 23 anos no mercado",
-    title: "Da partida ao\ndestino,",
-    highlight: "com segurança.",
-    desc: "Especialistas em eventos automobilísticos e cursos de direção defensiva. Mais de duas décadas capacitando condutores e organizando eventos de excelência.",
-    cta: { label: "Ver cursos", href: "/#cursos" },
-    cta2: { label: "Fale conosco", href: "/#contato" },
-  },
-  {
-    image: "https://safed.com.br/wp-content/uploads/2021/06/slide2-1-1600x800-1.jpg",
-    tag: "Eventos",
-    title: "Eventos",
-    highlight: "Automobilísticos",
-    desc: "Do planejamento à execução, realizamos eventos de Test Drive, Off Road, Ride and Drive e Coordenação Técnica com excelência e segurança.",
+    label: "EVENTOS",
+    title: "Eventos\nAutomotivos",
+    highlight: "de excelência.",
+    desc: "Test Drive, Off Road, Ride and Drive — do briefing à execução com segurança.",
     cta: { label: "Ver eventos", href: "/#eventos" },
-    cta2: { label: "Saiba mais", href: "/#contato" },
+    cta2: { label: "Fale conosco", href: "/#contato" },
   },
   {
-    image: "https://safed.com.br/wp-content/uploads/2021/06/slide3-1600x800-1.jpg",
-    tag: "Cursos",
+    label: "CURSOS",
     title: "Direção",
-    highlight: "Defensiva",
-    desc: "Conscientizando cada aluno de sua responsabilidade no trânsito. Cursos certificados pelo DETRAN para empresas e condutores em toda a América Latina.",
+    highlight: "Defensiva.",
+    desc: "Certificados pelo DETRAN. Mais de 50 mil alunos formados na América Latina.",
     cta: { label: "Ver cursos", href: "/#cursos" },
     cta2: { label: "Fale conosco", href: "/#contato" },
+  },
+  {
+    label: "SEGURANÇA",
+    title: "Da partida\nao destino,",
+    highlight: "com segurança.",
+    desc: "Mais de 23 anos capacitando condutores e organizando eventos para montadoras.",
+    cta: { label: "Saiba mais", href: "/#sobre" },
+    cta2: { label: "Fale conosco", href: "/#contato" },
+  },
+  {
+    label: "EMPRESAS",
+    title: "Treinamento",
+    highlight: "Empresarial.",
+    desc: "Reduza sinistros e custos com frotas. Soluções B2B completas para sua empresa.",
+    cta: { label: "Fale conosco", href: "/#contato" },
+    cta2: { label: "Ver cursos", href: "/#cursos" },
   },
 ]
 
 export default function Hero() {
-  const [current, setCurrent] = useState(0)
-  const [direction, setDirection] = useState(1)
+  const [active, setActive] = useState("SEGURANÇA")
 
-  const goTo = useCallback((index: number, dir: number) => {
-    setDirection(dir)
-    setCurrent(index)
-  }, [])
-
-  const next = useCallback(() => {
-    goTo((current + 1) % slides.length, 1)
-  }, [current, goTo])
-
-  const prev = useCallback(() => {
-    goTo((current - 1 + slides.length) % slides.length, -1)
-  }, [current, goTo])
-
-  useEffect(() => {
-    const timer = setInterval(next, 6000)
-    return () => clearInterval(timer)
-  }, [next])
-
-  const slide = slides[current]
+  const slide = tabs.find((t) => t.label === active) ?? tabs[0]
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gray-950">
-      {/* Background slides */}
-      <AnimatePresence initial={false} custom={direction} mode="sync">
-        <motion.div
-          key={current}
-          custom={direction}
-          variants={{
-            enter: (d: number) => ({ x: d > 0 ? "100%" : "-100%", opacity: 0 }),
-            center: { x: 0, opacity: 1 },
-            exit: (d: number) => ({ x: d > 0 ? "-100%" : "100%", opacity: 0 }),
-          }}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="absolute inset-0"
-        >
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${slide.image})` }}
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-gray-950/92 via-gray-950/70 to-gray-950/20" />
-        </motion.div>
-      </AnimatePresence>
+    <section className="relative h-screen bg-gray-950 overflow-hidden">
+      {/* Vídeo de fundo */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-70"
+        src="/assets/banner.mp4"
+      />
 
-      {/* Red accent line */}
+      {/* Gradientes */}
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-950/95 via-gray-950/60 to-gray-950/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-transparent to-gray-950/40" />
+
+      {/* Linha vermelha lateral */}
       <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-red-600 z-10" />
 
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-20 pt-36 pb-24">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="max-w-xl lg:max-w-2xl"
-          >
-            <div className="inline-flex items-center gap-2 bg-red-600/20 border border-red-500/40 text-red-400 px-4 py-2 rounded-full text-sm font-medium mb-8">
-              {slide.tag}
-            </div>
+      {/* Conteúdo */}
+      <div className="relative z-10 h-full flex flex-col justify-between px-8 sm:px-12 lg:px-20 pt-36 pb-12">
 
-            <h1 className="text-[2.75rem] sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-8 tracking-tight whitespace-pre-line">
-              {slide.title}
-              <span className="text-red-500 block">{slide.highlight}</span>
-            </h1>
+        {/* Tabs */}
+        <nav className="flex flex-wrap gap-3">
+          {tabs.map((tab) => (
+            <button
+              key={tab.label}
+              onClick={() => setActive(tab.label)}
+              className={`px-5 py-2 rounded-full text-sm font-bold tracking-widest transition-all duration-200
+                ${active === tab.label
+                  ? "bg-red-600 text-white shadow-lg shadow-red-900/40"
+                  : "border border-white/30 text-white/60 hover:border-white/60 hover:text-white"
+                }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </nav>
 
-            <p className="text-base sm:text-lg text-gray-300 mb-12 leading-relaxed">
+        {/* Texto + CTA */}
+        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="max-w-2xl"
+            >
+              <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black text-white uppercase leading-[1.05] tracking-tight whitespace-pre-line mb-6">
+                {slide.title}
+                <span className="text-red-500 block">{slide.highlight}</span>
+              </h1>
+
+              <div className="flex flex-col sm:flex-row gap-4 mt-2">
+                <Link
+                  href={slide.cta.href}
+                  className="inline-flex items-center justify-center gap-2.5 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-semibold text-base transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg shadow-red-900/30"
+                >
+                  {slide.cta.label} <ArrowRight size={17} />
+                </Link>
+                <Link
+                  href={slide.cta2.href}
+                  className="inline-flex items-center justify-center gap-2.5 border-2 border-white/40 text-white hover:bg-white/10 hover:border-white/60 px-8 py-4 rounded-xl font-semibold text-base transition-all duration-200"
+                >
+                  {slide.cta2.label}
+                </Link>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={active + "-desc"}
+              initial={{ opacity: 0, x: 16 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -16 }}
+              transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+              className="text-white/50 text-sm tracking-widest uppercase max-w-[220px] text-left lg:text-right leading-relaxed"
+            >
               {slide.desc}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href={slide.cta.href}
-                className="inline-flex items-center justify-center gap-2.5 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-semibold text-base transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg shadow-red-900/30"
-              >
-                {slide.cta.label} <ArrowRight size={17} />
-              </Link>
-              <Link
-                href={slide.cta2.href}
-                className="inline-flex items-center justify-center gap-2.5 border-2 border-white/40 text-white hover:bg-white/10 hover:border-white/60 px-8 py-4 rounded-xl font-semibold text-base transition-all duration-200"
-              >
-                {slide.cta2.label}
-              </Link>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+            </motion.p>
+          </AnimatePresence>
+        </div>
       </div>
-
-      {/* Arrow controls */}
-      <button
-        onClick={prev}
-        className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
-        aria-label="Slide anterior"
+      {/* Scroll indicator */}
+      <motion.a
+        href="#diferenciais"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 group"
+        animate={{ y: [0, 6, 0] }}
+        transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
       >
-        <ChevronLeft size={20} />
-      </button>
-      <button
-        onClick={next}
-        className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
-        aria-label="Próximo slide"
-      >
-        <ChevronRight size={20} />
-      </button>
-
-      {/* Dots */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i, i > current ? 1 : -1)}
-            className={`transition-all duration-300 rounded-full ${
-              i === current ? "w-8 h-2 bg-red-500" : "w-2 h-2 bg-white/40 hover:bg-white/70"
-            }`}
-            aria-label={`Ir para slide ${i + 1}`}
-          />
-        ))}
-      </div>
+        <span className="text-white/30 text-[10px] tracking-[0.2em] uppercase group-hover:text-white/60 transition-colors">Scroll</span>
+        <ChevronDown size={18} className="text-white/30 group-hover:text-white/60 transition-colors" />
+      </motion.a>
     </section>
   )
 }

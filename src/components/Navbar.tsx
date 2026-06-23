@@ -9,11 +9,16 @@ import { eventos, cursos } from "@/data/content"
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [progress, setProgress] = useState(0)
   const [eventosOpen, setEventosOpen] = useState(false)
   const [cursosOpen, setCursosOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40)
+      const total = document.documentElement.scrollHeight - window.innerHeight
+      setProgress(total > 0 ? (window.scrollY / total) * 100 : 0)
+    }
     window.addEventListener("scroll", onScroll)
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
@@ -33,6 +38,9 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
+      {/* Progress bar */}
+      <div className="absolute bottom-0 left-0 h-[2px] bg-red-600 transition-all duration-100 z-50" style={{ width: `${progress}%` }} />
+
       <nav className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
         <Link href="/" className="relative flex items-center shrink-0 h-11 lg:h-14">

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Facebook, Youtube, Linkedin } from "lucide-react"
+import { Facebook, Youtube, Linkedin, Phone, Mail, MessageCircle } from "lucide-react"
 import { eventos, cursos, contact } from "@/data/content"
 
 export default function Footer() {
@@ -52,13 +52,13 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Contato</h4>
             <ul className="space-y-4">
               <li>
-                <a href={`tel:${contact.phone}`} className="text-sm hover:text-red-400 transition-colors">
-                  📞 {contact.phone}
+                <a href={`tel:${contact.phone}`} className="flex items-center gap-2 text-sm hover:text-red-400 transition-colors">
+                  <Phone size={14} /> {contact.phone}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${contact.email}`} className="text-sm hover:text-red-400 transition-colors">
-                  ✉️ {contact.email}
+                <a href={`mailto:${contact.email}`} className="flex items-center gap-2 text-sm hover:text-red-400 transition-colors">
+                  <Mail size={14} /> {contact.email}
                 </a>
               </li>
               <li>
@@ -66,9 +66,9 @@ export default function Footer() {
                   href={`https://wa.me/${contact.whatsapp}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-green-500 hover:text-green-400 transition-colors"
+                  className="flex items-center gap-2 text-sm text-green-500 hover:text-green-400 transition-colors"
                 >
-                  💬 WhatsApp
+                  <MessageCircle size={14} /> WhatsApp
                 </a>
               </li>
             </ul>
