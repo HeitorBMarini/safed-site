@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useInView } from "framer-motion"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Phone, Mail, MessageCircle, Facebook, Youtube, Linkedin, Send, MapPin, CheckCircle2 } from "lucide-react"
 import { contact } from "@/data/content"
 
@@ -9,9 +9,18 @@ export default function Contato() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: "-80px" })
   const [form, setForm] = useState({ nome: "", telefone: "", email: "", assunto: "", mensagem: "" })
+  const [origem, setOrigem] = useState({ label: "", path: "" })
   const [sent, setSent] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    setOrigem({
+      label: params.get("origem") ?? "",
+      path: params.get("origemPath") ?? window.location.pathname,
+    })
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -21,7 +30,11 @@ export default function Contato() {
       const res = await fetch("/api/contato", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          origem: origem.label || "Página inicial",
+          origemPath: origem.path || "/",
+        }),
       })
       if (!res.ok) throw new Error("Falha ao enviar")
       setSent(true)

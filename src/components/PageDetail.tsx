@@ -44,7 +44,7 @@ export default function PageDetail({ item, backHref, backLabel, tipo }: Props) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero banner */}
-      <div className="relative h-80 lg:h-[460px] bg-gray-900 overflow-hidden">
+      <div className="relative h-80 lg:h-115 bg-gray-900 overflow-hidden">
         <img
           src={item.image}
           alt={item.title}
@@ -114,7 +114,7 @@ export default function PageDetail({ item, backHref, backLabel, tipo }: Props) {
                 Ver todos os {backLabel.toLowerCase()}
               </Link>
               <Link
-                href="/#contato"
+                href={`/?origem=${encodeURIComponent(`${tipo}: ${item.title}`)}&origemPath=${encodeURIComponent(`${backHref}/${item.slug}`)}#contato`}
                 className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105"
               >
                 Solicitar orçamento <ArrowRight size={15} />
