@@ -95,7 +95,7 @@ export default function Hero() {
               transition={{ duration: 0.4, ease: "easeOut" }}
               className="max-w-2xl"
             >
-              <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black text-white uppercase leading-[1.05] tracking-tight whitespace-pre-line mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white uppercase leading-[1.05] tracking-tight whitespace-pre-line mb-6">
                 {slide.title}
                 <span className="text-red-500 block">{slide.highlight}</span>
               </h1>
