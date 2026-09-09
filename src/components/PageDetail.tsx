@@ -1,9 +1,9 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import Link from "next/link"
-import { Phone, MessageCircle, CheckCircle2, ArrowRight, CircleCheck } from "lucide-react"
-import { useState } from "react"
+import { Phone, MessageCircle, CheckCircle2, ArrowRight, CircleCheck, Expand, X } from "lucide-react"
+import { useEffect, useState } from "react"
 import { contact } from "@/data/content"
 import Breadcrumb from "@/components/Breadcrumb"
 
@@ -26,6 +26,20 @@ type Props = {
 export default function PageDetail({ item, backHref, backLabel, tipo }: Props) {
   const [form, setForm] = useState({ nome: "", telefone: "", email: "", mensagem: "" })
   const [sent, setSent] = useState(false)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+
+  useEffect(() => {
+    if (!lightboxOpen) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxOpen(false)
+    }
+    document.addEventListener("keydown", onKeyDown)
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.removeEventListener("keydown", onKeyDown)
+      document.body.style.overflow = ""
+    }
+  }, [lightboxOpen])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -44,27 +58,21 @@ export default function PageDetail({ item, backHref, backLabel, tipo }: Props) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero banner */}
-      <div className="relative h-80 lg:h-115 bg-gray-900 overflow-hidden">
-        <img
-          src={item.image}
-          alt={item.title}
-          className="w-full h-full object-cover opacity-50"
-        />
-        <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-900/50 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0">
-          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-12 pt-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Breadcrumb items={breadcrumbItems} />
-              <div className="mt-6">
-                <span className="text-red-400 text-xs font-bold uppercase tracking-[0.2em]">{tipo}</span>
-                <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white leading-tight mt-1">{item.title}</h1>
-              </div>
-            </motion.div>
-          </div>
+      <div className="relative bg-gray-950 overflow-hidden pt-28 pb-12 sm:pt-32 sm:pb-14">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.18),transparent_55%)]" />
+        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-red-600" />
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Breadcrumb items={breadcrumbItems} />
+            <div className="mt-6">
+              <span className="text-red-400 text-xs font-bold uppercase tracking-[0.2em]">{tipo}</span>
+              <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white leading-tight mt-1">{item.title}</h1>
+            </div>
+          </motion.div>
         </div>
       </div>
 
@@ -79,6 +87,23 @@ export default function PageDetail({ item, backHref, backLabel, tipo }: Props) {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="lg:col-span-2 flex flex-col gap-10"
           >
+            <button
+              type="button"
+              onClick={() => setLightboxOpen(true)}
+              className="group relative h-64 sm:h-96 w-full rounded-3xl overflow-hidden cursor-zoom-in"
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Expand size={18} className="text-gray-900" />
+                </div>
+              </div>
+            </button>
+
             <div>
               <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
                 Sobre este {tipo.toLowerCase()}
@@ -199,6 +224,38 @@ export default function PageDetail({ item, backHref, backLabel, tipo }: Props) {
           </motion.div>
         </div>
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+            onClick={() => setLightboxOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setLightboxOpen(false)}
+              aria-label="Fechar"
+              className="absolute top-5 right-5 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+            >
+              <X size={20} />
+            </button>
+            <motion.img
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              src={item.image}
+              alt={item.title}
+              onClick={(e) => e.stopPropagation()}
+              className="max-w-full max-h-full rounded-2xl object-contain"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
