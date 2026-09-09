@@ -117,18 +117,38 @@ export default function Hero() {
             </motion.div>
           </AnimatePresence>
 
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={active + "-desc"}
-              initial={{ opacity: 0, x: 16 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -16 }}
-              transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
-              className="text-white/50 text-sm tracking-widest uppercase max-w-[220px] text-left lg:text-right leading-relaxed"
+          <div className="flex flex-col items-start lg:items-end gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="flex items-center gap-3 bg-black/40 backdrop-blur-sm border border-white/10 rounded-2xl px-5 py-3"
             >
-              {slide.desc}
-            </motion.p>
-          </AnimatePresence>
+              <img src="/flogo.png" alt="SafeD" className="h-5 w-auto" />
+              <div className="w-px h-8 bg-white/15" />
+              <div>
+                <p className="text-2xl font-black text-white leading-none">
+                  23<span className="text-red-500">+</span>
+                </p>
+                <p className="text-[10px] text-white/50 uppercase tracking-wide whitespace-nowrap">
+                  Anos de experiência
+                </p>
+              </div>
+            </motion.div>
+
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={active + "-desc"}
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -16 }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+                className="text-white/50 text-sm tracking-widest uppercase max-w-[220px] text-left lg:text-right leading-relaxed"
+              >
+                {slide.desc}
+              </motion.p>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
       {/* Scroll indicator */}
