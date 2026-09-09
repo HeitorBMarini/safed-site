@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { ArrowRight, ChevronDown } from "lucide-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const tabs = [
   {
@@ -42,11 +42,27 @@ const tabs = [
 
 export default function Hero() {
   const [active, setActive] = useState("SEGURANÇA")
+  const [isPaused, setIsPaused] = useState(false)
 
   const slide = tabs.find((t) => t.label === active) ?? tabs[0]
 
+  useEffect(() => {
+    if (isPaused) return
+    const timer = setInterval(() => {
+      setActive((current) => {
+        const index = tabs.findIndex((t) => t.label === current)
+        return tabs[(index + 1) % tabs.length].label
+      })
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [isPaused])
+
   return (
-    <section className="relative h-screen bg-gray-950 overflow-hidden">
+    <section
+      className="relative h-screen bg-gray-950 overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       {/* Vídeo de fundo */}
       <video
         autoPlay
