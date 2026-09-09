@@ -53,13 +53,13 @@ export default function Hero() {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-70"
+        className="absolute inset-0 w-full h-full object-cover"
         src="/assets/banner.mp4"
       />
 
       {/* Gradientes */}
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-950/95 via-gray-950/60 to-gray-950/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-transparent to-gray-950/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/40 to-gray-950/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-gray-950/70 via-transparent to-gray-950/20" />
 
       {/* Linha vermelha lateral */}
       <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-red-600 z-10" />
