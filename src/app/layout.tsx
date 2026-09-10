@@ -28,13 +28,13 @@ export const metadata: Metadata = {
     siteName: "SafeD Cursos e Eventos",
     title: "SafeD — Cursos e Eventos Automotivos",
     description: "Especialistas em eventos automobilísticos e cursos de direção defensiva há mais de 23 anos.",
-    images: [{ url: "https://safed.com.br/wp-content/uploads/2021/06/slide1-4-1600x800-1.jpg", width: 1600, height: 800 }],
+    images: [{ url: "/assets/og-image.jpg", width: 1600, height: 800 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "SafeD — Cursos e Eventos Automotivos",
     description: "Especialistas em eventos automobilísticos e cursos de direção defensiva há mais de 23 anos.",
-    images: ["https://safed.com.br/wp-content/uploads/2021/06/slide1-4-1600x800-1.jpg"],
+    images: ["/assets/og-image.jpg"],
   },
   robots: { index: true, follow: true },
 }
@@ -43,7 +43,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" className={inter.variable}>
       <head>
-        <link rel="icon" href="https://safed.com.br/wp-content/uploads/2021/06/favicon-1.png" />
         <meta name="theme-color" content="#c8102e" />
       </head>
       <body className={inter.className}>

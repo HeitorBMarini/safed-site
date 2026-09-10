@@ -33,7 +33,7 @@ export default function Sobre() {
           >
             <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl">
               <img
-                src="https://safed.com.br/wp-content/uploads/2021/06/sobrenos.png"
+                src="/assets/sobre-nos.png"
                 alt="Sobre a SafeD"
                 className="w-full h-full object-cover"
               />
