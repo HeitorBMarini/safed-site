@@ -18,8 +18,8 @@ export async function POST(req: NextRequest) {
   const emailData = { nome, telefone, email, mensagem, origemLabel, origemPath: origemPath || "/" }
 
   await resend.emails.send({
-    from: process.env.FROM_EMAIL ?? "SafeD Site <onboarding@resend.dev>",
-    to: process.env.CONTACT_EMAIL ?? "heitor.marini07@gmail.com",
+    from: process.env.FROM_EMAIL ?? "SafeD <contato@safed.com.br>",
+    to: process.env.CONTACT_EMAIL ?? "safed@safed.com.br",
     replyTo: email,
     subject,
     html: buildContatoEmailHtml(emailData),

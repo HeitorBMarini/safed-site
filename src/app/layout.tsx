@@ -12,6 +12,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://safed.com.br"),
   title: {
     default: "SafeD — Cursos e Eventos Automotivos | Da partida ao destino com segurança",
     template: "%s | SafeD Cursos e Eventos",
@@ -28,6 +29,12 @@ export const metadata: Metadata = {
     title: "SafeD — Cursos e Eventos Automotivos",
     description: "Especialistas em eventos automobilísticos e cursos de direção defensiva há mais de 23 anos.",
     images: [{ url: "https://safed.com.br/wp-content/uploads/2021/06/slide1-4-1600x800-1.jpg", width: 1600, height: 800 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SafeD — Cursos e Eventos Automotivos",
+    description: "Especialistas em eventos automobilísticos e cursos de direção defensiva há mais de 23 anos.",
+    images: ["https://safed.com.br/wp-content/uploads/2021/06/slide1-4-1600x800-1.jpg"],
   },
   robots: { index: true, follow: true },
 }
