@@ -4,6 +4,7 @@ import "./globals.css"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import FloatingWhatsApp from "@/components/FloatingWhatsApp"
+import { contact } from "@/data/content"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -47,6 +48,41 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-BR" className={inter.variable}>
       <head>
         <meta name="theme-color" content="#c8102e" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "SafeD Cursos e Eventos",
+              alternateName: "SafeD",
+              url: "https://safed.com.br",
+              logo: "https://safed.com.br/assets/favicon.png",
+              description:
+                "Há mais de 23 anos, a SafeD é especialista em eventos automobilísticos e cursos de direção defensiva, atuando em toda a América Latina.",
+              foundingDate: "2003",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "São Paulo",
+                addressRegion: "SP",
+                addressCountry: "BR",
+              },
+              areaServed: {
+                "@type": "Country",
+                name: "Brasil",
+              },
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: `+55${contact.whatsapp.slice(2)}`,
+                contactType: "customer service",
+                email: contact.email,
+                areaServed: "BR",
+                availableLanguage: "Portuguese",
+              },
+              sameAs: [contact.facebook, contact.youtube, contact.linkedin],
+            }),
+          }}
+        />
       </head>
       <body className={inter.className}>
         <Navbar />
