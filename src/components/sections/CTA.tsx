@@ -42,7 +42,7 @@ export default function CTA() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="text-5xl sm:text-6xl lg:text-8xl font-black text-white uppercase leading-[1.02] tracking-tight mb-12"
+          className="text-4xl sm:text-6xl lg:text-8xl font-black text-white uppercase leading-[1.02] tracking-tight mb-12"
         >
           Precisa de um
           <span className="text-red-500 block">Evento ou</span>
