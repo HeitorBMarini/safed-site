@@ -1,6 +1,7 @@
 import Link from "next/link"
-import { Facebook, Youtube, Linkedin, Phone, Mail, MessageCircle } from "lucide-react"
+import { Facebook, Youtube, Linkedin, Phone, Mail } from "lucide-react"
 import { eventos, cursos, contact } from "@/data/content"
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon"
 
 export default function Footer() {
   return (
@@ -68,7 +69,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-green-500 hover:text-green-400 transition-colors"
                 >
-                  <MessageCircle size={14} /> WhatsApp
+                  <WhatsAppIcon className="w-3.5 h-3.5" /> WhatsApp
                 </a>
               </li>
             </ul>

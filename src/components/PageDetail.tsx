@@ -2,7 +2,8 @@
 
 import { AnimatePresence, motion } from "framer-motion"
 import Link from "next/link"
-import { Phone, MessageCircle, CheckCircle2, ArrowRight, CircleCheck, Expand, X } from "lucide-react"
+import { Phone, CheckCircle2, ArrowRight, CircleCheck, Expand, X } from "lucide-react"
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon"
 import { useEffect, useState } from "react"
 import { contact } from "@/data/content"
 import Breadcrumb from "@/components/Breadcrumb"
@@ -209,7 +210,7 @@ export default function PageDetail({ item, backHref, backLabel, tipo }: Props) {
                     type="submit"
                     className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-semibold text-sm transition-all duration-200 hover:scale-[1.02] mt-1"
                   >
-                    <MessageCircle size={16} /> Enviar pelo WhatsApp
+                    <WhatsAppIcon className="w-4 h-4" /> Enviar pelo WhatsApp
                   </button>
                 </form>
               )}
