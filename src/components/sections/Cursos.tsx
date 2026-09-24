@@ -57,9 +57,6 @@ export default function Cursos() {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-gray-900/80 via-gray-900/20 to-transparent" />
-                  <div className="absolute top-4 right-4 bg-red-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold shadow-md">
-                    Cert. DETRAN
-                  </div>
                 </div>
                 <div className="p-7 flex flex-col flex-1">
                   <h3 className="text-lg font-bold text-white mb-3 group-hover:text-red-400 transition-colors">

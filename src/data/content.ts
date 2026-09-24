@@ -96,7 +96,6 @@ export const stats = [
   { value: "23+", label: "Anos de experiência" },
   { value: "500+", label: "Eventos realizados" },
   { value: "50k+", label: "Alunos certificados" },
-  { value: "100%", label: "Cert. DETRAN" },
 ]
 
 export const contact = {

@@ -2,13 +2,12 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef, useEffect, useState } from "react"
-import { CalendarDays, Trophy, Users, BadgeCheck } from "lucide-react"
+import { CalendarDays, Trophy, Users } from "lucide-react"
 
 const statsData = [
   { raw: 23, suffix: "+", label: "Anos de experiência", icon: CalendarDays },
   { raw: 500, suffix: "+", label: "Eventos realizados", icon: Trophy },
   { raw: 50, suffix: "k+", label: "Alunos certificados", icon: Users },
-  { raw: 100, suffix: "%", label: "Cert. DETRAN", icon: BadgeCheck },
 ]
 
 function useCountUp(target: number, inView: boolean, duration = 1800) {
@@ -70,7 +69,7 @@ export default function Stats() {
         }}
       />
       <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-white/20">
+        <div className="grid grid-cols-3 divide-x divide-white/20">
           {statsData.map((stat, i) => (
             <StatItem key={i} stat={stat} index={i} inView={inView} />
           ))}
