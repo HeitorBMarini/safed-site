@@ -22,9 +22,10 @@ type Props = {
   backHref: string
   backLabel: string
   tipo: string
+  related?: { slug: string; title: string; shortDesc: string }[]
 }
 
-export default function PageDetail({ item, backHref, backLabel, tipo }: Props) {
+export default function PageDetail({ item, backHref, backLabel, tipo, related = [] }: Props) {
   const [form, setForm] = useState({ nome: "", telefone: "", email: "", mensagem: "" })
   const [sent, setSent] = useState(false)
   const [lightboxOpen, setLightboxOpen] = useState(false)
@@ -225,6 +226,28 @@ export default function PageDetail({ item, backHref, backLabel, tipo }: Props) {
           </motion.div>
         </div>
       </div>
+
+      {related.length > 0 && (
+        <section className="bg-gray-50 border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 lg:py-20">
+            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-8">
+              Conheça também outros {backLabel.toLowerCase()} da SafeD
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {related.map((r) => (
+                <Link
+                  key={r.slug}
+                  href={`${backHref.replace("/#", "/")}/${r.slug}`}
+                  className="group block bg-white border border-gray-200 hover:border-red-200 rounded-2xl p-6 transition-colors"
+                >
+                  <h3 className="font-bold text-gray-900 group-hover:text-red-600 transition-colors">{r.title}</h3>
+                  <p className="text-sm text-gray-600 mt-2 leading-snug">{r.shortDesc}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Lightbox */}
       <AnimatePresence>

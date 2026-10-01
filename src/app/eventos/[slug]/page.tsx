@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { eventos } from "@/data/content"
 import PageDetail from "@/components/PageDetail"
+import { buildMetadata, buildJsonLd } from "@/lib/seo"
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -13,16 +14,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const evento = eventos.find((e) => e.slug === slug)
   if (!evento) return {}
-  return {
-    title: evento.title,
-    description: evento.shortDesc,
-    openGraph: { title: evento.title, description: evento.shortDesc, images: [{ url: evento.image }] },
-  }
+  return buildMetadata("eventos", evento)
 }
 
 export default async function EventoPage({ params }: Props) {
   const { slug } = await params
   const evento = eventos.find((e) => e.slug === slug)
   if (!evento) notFound()
-  return <PageDetail item={evento} backHref="/#eventos" backLabel="Eventos" tipo="Evento" />
+  const related = eventos.filter((x) => x.slug !== slug).map(({ slug, title, shortDesc }) => ({ slug, title, shortDesc }))
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd("eventos", evento)) }}
+      />
+      <PageDetail item={evento} backHref="/#eventos" backLabel="Eventos" tipo="Evento" related={related} />
+    </>
+  )
 }
