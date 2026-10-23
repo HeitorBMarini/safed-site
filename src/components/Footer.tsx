@@ -16,7 +16,7 @@ export default function Footer() {
               className="h-12 object-contain mb-5 brightness-200"
             />
             <p className="text-sm leading-relaxed mb-5">
-              Da partida ao destino, com segurança. Especialistas em eventos automobilísticos e cursos de direção defensiva desde 2002.
+              Da partida ao destino, com segurança. Há mais de 25 anos formando motoristas e realizando eventos automotivos.
             </p>
           </div>
 

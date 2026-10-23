@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | SafeD Cursos e Eventos",
   },
   description:
-    "Há mais de 23 anos, a SafeD é especialista em eventos automobilísticos e cursos de direção defensiva. Coordenação técnica, Test Drive, Off Road, Ride and Drive e muito mais.",
+    "Há mais de 25 anos, a SafeD é especialista em eventos automobilísticos e cursos de direção defensiva. Coordenação técnica, Test Drive, Off Road, Ride and Drive e muito mais.",
   keywords: ["direção defensiva", "curso de direção", "eventos automotivos", "test drive", "off road", "SafeD", "DETRAN"],
   authors: [{ name: "SafeD Cursos e Eventos" }],
   openGraph: {
@@ -28,13 +28,13 @@ export const metadata: Metadata = {
     url: "https://safed.com.br",
     siteName: "SafeD Cursos e Eventos",
     title: "SafeD — Cursos e Eventos Automotivos",
-    description: "Especialistas em eventos automobilísticos e cursos de direção defensiva há mais de 23 anos.",
+    description: "Especialistas em eventos automobilísticos e cursos de direção defensiva há mais de 25 anos.",
     images: [{ url: "/assets/og-image.jpg", width: 1600, height: 800 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "SafeD — Cursos e Eventos Automotivos",
-    description: "Especialistas em eventos automobilísticos e cursos de direção defensiva há mais de 23 anos.",
+    description: "Especialistas em eventos automobilísticos e cursos de direção defensiva há mais de 25 anos.",
     images: ["/assets/og-image.jpg"],
   },
   robots: { index: true, follow: true },
@@ -59,7 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               url: "https://safed.com.br",
               logo: "https://safed.com.br/assets/favicon.png",
               description:
-                "Há mais de 23 anos, a SafeD é especialista em eventos automobilísticos e cursos de direção defensiva, atuando em toda a América Latina.",
+                "Há mais de 25 anos, a SafeD é especialista em eventos automobilísticos e cursos de direção defensiva, atuando em toda a América Latina.",
               foundingDate: "2003",
               address: {
                 "@type": "PostalAddress",

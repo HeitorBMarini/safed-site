@@ -26,7 +26,7 @@ const tabs = [
     label: "SEGURANÇA",
     title: "Da partida\nao destino,",
     highlight: "com segurança.",
-    desc: "Mais de 23 anos capacitando condutores e organizando eventos para montadoras.",
+    desc: "Mais de 25 anos capacitando condutores e organizando eventos para montadoras.",
     cta: { label: "Saiba mais", href: "/#sobre" },
     cta2: { label: "Fale conosco", href: "/#contato" },
   },

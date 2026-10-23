@@ -74,7 +74,7 @@ export default function Contato() {
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-5">Entre em Contato</h2>
           <div className="w-14 h-1 bg-red-600 mx-auto rounded-full mb-7" />
           <p className="text-gray-400 max-w-xl mx-auto text-base lg:text-lg text-center leading-relaxed">
-            Estamos prontos para criar a solução ideal para você.
+            Vamos conversar sobre a sua frota ou o seu próximo evento? Nossa equipe monta a solução ideal para a sua empresa.
           </p>
         </motion.div>
 

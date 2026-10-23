@@ -7,13 +7,13 @@ import { ShieldCheck, BadgeCheck, Globe } from "lucide-react"
 const cards = [
   {
     icon: ShieldCheck,
-    title: "23+ Anos de Mercado",
-    desc: "Fundada em 2002, somos referência nacional em eventos automobilísticos e capacitação de condutores.",
+    title: "25+ Anos de Mercado",
+    desc: "Há mais de 25 anos, somos referência nacional em eventos automobilísticos e capacitação de condutores.",
   },
   {
     icon: BadgeCheck,
     title: "Instrutores Credenciados",
-    desc: "Todos certificados pelo DETRAN e pelos principais órgãos automotivos do país e do mundo.",
+    desc: "Todos credenciados pelo DETRAN e pelos principais órgãos automotivos.",
   },
   {
     icon: Globe,

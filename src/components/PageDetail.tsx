@@ -118,12 +118,12 @@ export default function PageDetail({ item, backHref, backLabel, tipo, related = 
               <h3 className="text-lg font-bold mb-8 text-white">Por que escolher a SafeD?</h3>
               <div className="grid sm:grid-cols-2 gap-5">
                 {[
-                  "Mais de 23 anos de experiência no mercado",
-                  "Instrutores credenciados pelos principais órgãos automotivos",
-                  "Metodologia testada e aprovada",
-                  "Atendimento personalizado para cada cliente",
-                  "Certificação reconhecida pelo DETRAN",
-                  "Atuação em toda a América Latina",
+                  "Instrutores credenciados pelo DETRAN",
+                  "Mais de 25 anos de experiência no mercado",
+                  "Mais de 50 mil alunos formados e 500 eventos realizados",
+                  "Treinamento sob medida para cada empresa",
+                  "Metodologia própria, com teoria e prática no volante",
+                  "Atuação em todo o Brasil e na América Latina",
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircle2 size={16} className="text-red-400 mt-0.5 shrink-0" />

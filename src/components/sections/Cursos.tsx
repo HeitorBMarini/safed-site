@@ -26,7 +26,7 @@ export default function Cursos() {
           className="text-center mb-16 lg:mb-20"
         >
           <span className="inline-block text-red-400 text-xs font-bold uppercase tracking-[0.2em] bg-red-500/10 border border-red-500/20 px-4 py-2 rounded-full mb-5">
-            Capacitação
+            Para empresas e frotas
           </span>
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-5">
             Nossos Cursos

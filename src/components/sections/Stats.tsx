@@ -5,7 +5,7 @@ import { useRef, useEffect, useState } from "react"
 import { CalendarDays, Trophy, Users } from "lucide-react"
 
 const statsData = [
-  { raw: 23, suffix: "+", label: "Anos de experiência", icon: CalendarDays },
+  { raw: 25, suffix: "+", label: "Anos de experiência", icon: CalendarDays },
   { raw: 500, suffix: "+", label: "Eventos realizados", icon: Trophy },
   { raw: 50, suffix: "k+", label: "Alunos certificados", icon: Users },
 ]

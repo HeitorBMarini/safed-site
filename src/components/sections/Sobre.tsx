@@ -6,11 +6,11 @@ import { CheckCircle2 } from "lucide-react"
 
 const diferenciais = [
   "Instrutores credenciados pelo DETRAN",
-  "Certificação reconhecida pelos principais órgãos automotivos",
-  "Mais de 23 anos de experiência no mercado",
-  "Atendimento personalizado para cada cliente",
-  "Metodologia testada e aprovada",
-  "Atuação em toda a América Latina",
+  "Mais de 25 anos de experiência no mercado",
+  "Mais de 50 mil alunos formados e 500 eventos realizados",
+  "Treinamento sob medida para cada empresa",
+  "Metodologia própria, com teoria e prática no volante",
+  "Atuação em todo o Brasil e na América Latina",
 ]
 
 export default function Sobre() {
@@ -77,10 +77,10 @@ export default function Sobre() {
             <div className="w-14 h-1 bg-red-600 rounded-full mb-8" />
 
             <p className="text-gray-600 leading-relaxed mb-5 text-base lg:text-[1.05rem]">
-              Fundada em 2002, a SafeD atua no mercado de Eventos e Cursos automotivos. Oferecemos propostas inovadoras para clientes arrojados que buscam segurança, capacitação e sucesso na realização dos seus negócios.
+              A SafeD Cursos e Eventos é especialista em eventos automobilísticos e cursos de direção defensiva. São mais de 25 anos preparando condutores, equipes comerciais e frotas inteiras, com instrutores credenciados pelo DETRAN e uma metodologia que une teoria e prática no volante.
             </p>
             <p className="text-gray-600 leading-relaxed mb-10 text-base lg:text-[1.05rem]">
-              Nossa equipe, atenta às tendências do mercado, busca constantemente o conhecimento e a qualificação, aprimorando cada vez mais os serviços prestados. Estamos sempre prontos para criar, planejar, organizar e executar com excelência.
+              Do test drive de lançamento ao treinamento da sua frota, cuidamos de cada detalhe para que todo mundo chegue ao destino com segurança.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">

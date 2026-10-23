@@ -2,7 +2,7 @@ export const eventos = [
   {
     slug: "coordenacao-tecnica",
     title: "Coordenação Técnica",
-    shortDesc: "Profissionais altamente qualificados para organização e execução de eventos de demonstração.",
+    shortDesc: "Equipe técnica para planejar e executar demonstrações, lançamentos e feiras.",
     description: "Com uma larga experiência em eventos, a SafeD está preparada para atender as diversas necessidades do mercado automotivo. Possuímos profissionais altamente qualificados para conduzir com excelência a organização, preparação e execução de eventos de demonstração, lançamentos de produtos, feiras e competições.",
     image: "/assets/coordenacao-tecnica.jpg",
     icon: "🏁",
@@ -10,7 +10,7 @@ export const eventos = [
   {
     slug: "off-road",
     title: "Off Road",
-    shortDesc: "Do planejamento à execução, construímos pistas Off Road de acordo com a necessidade de cada cliente.",
+    shortDesc: "Pistas Off Road projetadas e construídas sob medida para cada cliente.",
     description: "Para o lançamento de produto, a SafeD colabora desde o início do briefing junto ao cliente, pontuando onde poderemos destacar os itens mais importantes, determinando qual ação deve ser realizada para destaque dos equipamentos e suas tecnologias. Do planejamento à execução, com nosso know how na realização de eventos em pistas Off Road, podemos criar e construir pistas de acordo com a necessidade de cada cliente.",
     image: "/assets/off-road.jpg",
     icon: "🚙",
@@ -18,7 +18,7 @@ export const eventos = [
   {
     slug: "ride-and-drive",
     title: "Ride and Drive",
-    shortDesc: "Instrutores credenciados nos mais renomados órgãos automotivos do mundo.",
+    shortDesc: "Instrutores credenciados apresentando a tecnologia do veículo na prática.",
     description: "É de extrema importância o preparo e a execução para um Ride and Drive. Oferecemos toda nossa experiência e profissionais altamente capacitados, credenciados e certificados nos mais renomados órgãos automotivos do mundo, para fazer do seu Test Drive um momento inesquecível. Para eventos realizados em circuito fechado, nossos instrutores demonstram todas as tecnologias embarcadas do produto, e na sequência convidam o cliente a testá-lo na prática, garantindo a segurança.",
     image: "/assets/ride-and-drive.jpg",
     icon: "🏎️",
@@ -26,8 +26,8 @@ export const eventos = [
   {
     slug: "test-drive",
     title: "Test Drive",
-    shortDesc: "Mais de 23 anos de experiência atendendo montadoras e empresas na América Latina.",
-    description: "Contamos com uma experiência de mais de 23 anos no mercado atendendo montadoras e empresas de autopeças, realizando ao longo desse tempo diversos eventos de Test Drive na América Latina, planejando, criando e executando com excelência de acordo com os objetivos de cada cliente. Nossos instrutores são especialistas e experientes na realização de Test Drive, o que é fundamental para a segurança e qualidade da ação.",
+    shortDesc: "Mais de 25 anos realizando test drives para montadoras e empresas.",
+    description: "Contamos com uma experiência de mais de 25 anos no mercado atendendo montadoras e empresas de autopeças, realizando ao longo desse tempo diversos eventos de Test Drive na América Latina, planejando, criando e executando com excelência de acordo com os objetivos de cada cliente. Nossos instrutores são especialistas e experientes na realização de Test Drive, o que é fundamental para a segurança e qualidade da ação.",
     image: "/assets/test-drive.jpg",
     icon: "🚗",
   },
@@ -45,7 +45,7 @@ export const cursos = [
   {
     slug: "direcao-defensiva",
     title: "Direção Defensiva",
-    shortDesc: "Conscientização e segurança no trânsito com certificação DETRAN.",
+    shortDesc: "Teoria e prática no volante, com instrutores credenciados pelo DETRAN.",
     description: "Em nossa metodologia construímos uma relação de interação com os alunos, isso é fundamental para a evolução do entendimento e importância da conscientização da segurança no trânsito. O curso comprovadamente reduz as ocorrências (multas, sinistros, manutenção e consumo de combustível) entre as empresas que implantaram esse treinamento para seus colaboradores. Ao final do curso os alunos recebem a certificação com o credenciamento do instrutor reconhecido pelo DETRAN.",
     image: "/assets/direcao-defensiva.jpg",
     icon: "🛡️",
@@ -53,7 +53,7 @@ export const cursos = [
   {
     slug: "direcao-defensiva-motociclistas",
     title: "Direção Defensiva para Motociclistas",
-    shortDesc: "30% da frota brasileira, responsáveis por mais de 70% dos acidentes.",
+    shortDesc: "Preparo específico para quem pilota, do conceito à prática.",
     description: "As motocicletas representam 30% da frota Brasileira e estão ligadas a mais de 70% dos acidentes de trânsito no país. A conscientização desses condutores é fundamental para salvarmos vidas. O Curso de direção defensiva traz no conceito e na prática diversos elementos, dicas e normas para obter total segurança na condução.",
     image: "/assets/direcao-defensiva-motociclistas.png",
     icon: "🏍️",
@@ -61,7 +61,7 @@ export const cursos = [
   {
     slug: "treinamento-veiculos-pesados",
     title: "Treinamento Veículos Pesados",
-    shortDesc: "Economia de 8% a 12% em diesel e redução de sinistros comprovada.",
+    shortDesc: "Economia de 8% a 12% no diesel e menos sinistros na frota.",
     description: "A SafeD realiza um treinamento completo para motoristas e empresas que trabalham com veículos pesados. Através do mapeamento das habilidades e costumes dos motoristas em conjunto com o treinamento, conseguimos atingir uma economia de DIESEL de 8% a 12%, e reduções com gastos em sinistros, manutenções corretivas e pneus. O treinamento engloba aula teórica e prática, aborda temas de Direção Defensiva, Legislação, Condução Econômica e Mecânica Básica, e é certificado pelos mais respeitados órgãos do país.",
     image: "/assets/treinamento-veiculos-pesados.jpg",
     icon: "🚛",
@@ -69,15 +69,15 @@ export const cursos = [
   {
     slug: "direcao-evasiva",
     title: "Direção Evasiva",
-    shortDesc: "Técnicas para condutores de veículos blindados contra abordagens.",
-    description: "Direcionado para pessoas que possuem ou conduzem veículos blindados, o treinamento tem como objetivo ensinar técnicas e procedimentos que dificultam ao máximo qualquer tentativa de abordagem. Contamos com uma experiência de mais de 23 anos no mercado para garantir a máxima segurança e eficácia no treinamento.",
+    shortDesc: "Técnicas de condução para veículos blindados contra abordagens.",
+    description: "Direcionado para pessoas que possuem ou conduzem veículos blindados, o treinamento tem como objetivo ensinar técnicas e procedimentos que dificultam ao máximo qualquer tentativa de abordagem. Contamos com uma experiência de mais de 25 anos no mercado para garantir a máxima segurança e eficácia no treinamento.",
     image: "/assets/direcao-evasiva.jpg",
     icon: "🔐",
   },
   {
     slug: "direcao-preventiva-avancada",
     title: "Direção Preventiva Avançada",
-    shortDesc: "Aprimoramento da condução, reação e reflexos para quem já dirige.",
+    shortDesc: "Reação, reflexos e técnica para quem já dirige.",
     description: "Nosso conteúdo didático e teórico é essencial para a mudança da conscientização no trânsito, e as aulas práticas com exercícios avançados são fundamentais para a evolução comportamental na direção. Assim, tornamos os alunos mais seguros e preparados na prevenção de acidentes. Nosso curso teórico e prático aborda o conteúdo programático da norma RAC 02.",
     image: "/assets/direcao-preventiva-avancada.jpg",
     icon: "⚡",
@@ -85,7 +85,7 @@ export const cursos = [
   {
     slug: "treinamento-empresarial",
     title: "Treinamento Empresarial",
-    shortDesc: "Capacitação de equipes comerciais para lançamentos de produtos.",
+    shortDesc: "Equipes comerciais prontas para lançamentos e test drives.",
     description: "Nossa vasta experiência em preparar equipes para a realização de Test Drive traz a segurança e credibilidade necessária para treinarmos cada colaborador com extrema destreza em conduzir a apresentação de novos produtos, seja para enfatizar todas as tecnologias embarcadas no veículo, como na condução e demonstração prática do Test Drive. A cada lançamento de produto é fundamental capacitar a equipe comercial da rede concessionária.",
     image: "/assets/treinamento-empresarial.jpg",
     icon: "🏢",
@@ -93,7 +93,7 @@ export const cursos = [
 ]
 
 export const stats = [
-  { value: "23+", label: "Anos de experiência" },
+  { value: "25+", label: "Anos de experiência" },
   { value: "500+", label: "Eventos realizados" },
   { value: "50k+", label: "Alunos certificados" },
 ]

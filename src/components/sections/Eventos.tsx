@@ -20,7 +20,7 @@ export default function Eventos() {
           className="text-center mb-16 lg:mb-20"
         >
           <span className="inline-block text-red-600 text-xs font-bold uppercase tracking-[0.2em] bg-red-50 px-4 py-2 rounded-full mb-5">
-            O que fazemos
+            Para montadoras e marcas
           </span>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-5">
             Nossos Eventos

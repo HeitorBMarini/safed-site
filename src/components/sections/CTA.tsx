@@ -57,7 +57,7 @@ export default function CTA() {
           className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8"
         >
           <p className="text-gray-400 text-sm leading-relaxed max-w-sm uppercase tracking-wider">
-            Do briefing à execução — a SafeD cuida de tudo com segurança e excelência.
+            Do briefing à execução, a SafeD cuida de tudo com segurança e excelência.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <Link
