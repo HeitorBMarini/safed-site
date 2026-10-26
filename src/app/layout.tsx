@@ -60,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               logo: "https://safed.com.br/assets/favicon.png",
               description:
                 "Há mais de 25 anos, a SafeD é especialista em eventos automobilísticos e cursos de direção defensiva, atuando em toda a América Latina.",
-              foundingDate: "2003",
+              foundingDate: "2002",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "São Paulo",
