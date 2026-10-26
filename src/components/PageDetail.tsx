@@ -7,6 +7,7 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon"
 import { useEffect, useState } from "react"
 import { contact } from "@/data/content"
 import Breadcrumb from "@/components/Breadcrumb"
+import Image from "next/image"
 
 type Item = {
   title: string
@@ -94,10 +95,13 @@ export default function PageDetail({ item, backHref, backLabel, tipo, related = 
               onClick={() => setLightboxOpen(true)}
               className="group relative h-64 sm:h-96 w-full rounded-3xl overflow-hidden cursor-zoom-in"
             >
-              <img
+              <Image
                 src={item.image}
                 alt={item.title}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 66vw"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
                 <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

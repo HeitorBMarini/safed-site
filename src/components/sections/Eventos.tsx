@@ -5,6 +5,7 @@ import { useRef } from "react"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { eventos } from "@/data/content"
+import Image from "next/image"
 
 export default function Eventos() {
   const ref = useRef(null)
@@ -44,11 +45,12 @@ export default function Eventos() {
                 className="group flex flex-col rounded-2xl overflow-hidden border border-gray-100 hover:border-red-200 hover:shadow-2xl shadow-sm transition-all duration-300 h-full bg-white"
               >
                 <div className="relative overflow-hidden h-56 bg-gray-100">
-                  <img
+                  <Image
                     src={evento.image}
                     alt={evento.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-gray-900/70 via-gray-900/20 to-transparent" />
                 </div>
