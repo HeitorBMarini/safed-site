@@ -11,10 +11,13 @@ const statsData = [
 ]
 
 function useCountUp(target: number, inView: boolean, duration = 1800) {
-  const [count, setCount] = useState(0)
+  // Começa no valor final para que o HTML renderizado no servidor já mostre os números reais;
+  // a animação (0 -> alvo) só roda no navegador, quando o bloco entra na tela.
+  const [count, setCount] = useState(target)
 
   useEffect(() => {
     if (!inView) return
+    setCount(0)
     let frame = 0
     const totalFrames = Math.round(duration / 16)
     const timer = setInterval(() => {

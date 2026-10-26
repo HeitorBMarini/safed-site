@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     template: "%s | SafeD Cursos e Eventos",
   },
   description:
-    "Há mais de 25 anos, a SafeD é especialista em eventos automobilísticos e cursos de direção defensiva. Coordenação técnica, Test Drive, Off Road, Ride and Drive e muito mais.",
-  keywords: ["direção defensiva", "curso de direção", "eventos automotivos", "test drive", "off road", "SafeD", "DETRAN"],
+    "Há mais de 25 anos, a SafeD é especialista em eventos automobilísticos e cursos de direção defensiva. Test Drive, Off Road, Ride and Drive e mais.",
+  alternates: { canonical: "/" },
   authors: [{ name: "SafeD Cursos e Eventos" }],
   openGraph: {
     type: "website",

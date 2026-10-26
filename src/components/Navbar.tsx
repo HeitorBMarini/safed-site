@@ -46,12 +46,13 @@ export default function Navbar() {
         <Link href="/" className="relative flex items-center shrink-0 h-11 lg:h-14">
           <img
             src="/logo.png"
-            alt="SafeD"
+            alt="SafeD Cursos e Eventos"
             className={`h-full object-contain transition-opacity duration-300 ${scrolled ? "opacity-0 absolute" : "opacity-100"}`}
           />
           <img
             src="/flogo.png"
-            alt="SafeD"
+            alt=""
+            aria-hidden="true"
             className={`h-full object-contain transition-opacity duration-300 ${scrolled ? "opacity-100" : "opacity-0 absolute"}`}
           />
         </Link>
