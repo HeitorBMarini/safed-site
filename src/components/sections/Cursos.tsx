@@ -5,6 +5,7 @@ import { useRef } from "react"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { cursos } from "@/data/content"
+import Image from "next/image"
 
 export default function Cursos() {
   const ref = useRef(null)
@@ -50,11 +51,12 @@ export default function Cursos() {
                 className="group flex flex-col bg-gray-900 rounded-2xl overflow-hidden border border-white/5 hover:border-red-500/30 hover:shadow-2xl hover:shadow-red-900/20 shadow-sm transition-all duration-300 h-full"
               >
                 <div className="relative overflow-hidden h-56 bg-gray-800">
-                  <img
+                  <Image
                     src={curso.image}
                     alt={curso.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-gray-900/80 via-gray-900/20 to-transparent" />
                 </div>

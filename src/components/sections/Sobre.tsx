@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { CheckCircle2 } from "lucide-react"
+import Image from "next/image"
 
 const diferenciais = [
   "Instrutores credenciados pelo DETRAN",
@@ -32,10 +33,12 @@ export default function Sobre() {
             className="relative"
           >
             <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl">
-              <img
+              <Image
                 src="/assets/sobre-nos.png"
                 alt="Sobre a SafeD"
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-linear-to-tr from-gray-900/30 to-transparent" />
             </div>

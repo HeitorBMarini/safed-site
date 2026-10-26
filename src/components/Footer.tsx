@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <img
               src="/flogo.png"
-              alt="SafeD"
+              alt="SafeD Cursos e Eventos"
               className="h-12 object-contain mb-5 brightness-200"
             />
             <p className="text-sm leading-relaxed mb-5">
